@@ -33,14 +33,10 @@ class OAuth {
       redirect_uri: `${SITE_URL}/.netlify/functions/auth-callback`,
     }
 
-    if(this.provider === "netlify") {
-      Object.assign(cfg, providers.netlify);
-    } else if(this.provider === "github") {
-      Object.assign(cfg, providers.github);
-    } else if(this.provider === "gitlab") {
-      Object.assign(cfg, providers.gitlab);
+    if(providers[this.provider]) {
+      Object.assign(cfg, providers[this.provider]);
     } else {
-      throw new Error("Invalid provider passed to OAuth. Currently only `netlify`, `github` or `gitlab` are supported.")
+      throw new Error(`Invalid provider passed to OAuth. Currently only ${Object.keys(providers).join(', ')} are supported.`);
     }
 
     cfg.clientId = process.env[cfg.clientIdKey];

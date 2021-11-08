@@ -40,11 +40,29 @@ const gitlab = {
 
   /* User API endpoint */
   userApi: "https://gitlab.com/api/v4/user",
-  
-}
+};
+
+// https://developer.atlassian.com/cloud/bitbucket/oauth-2/
+const bitbucket = {
+  clientIdKey: 'BITBUCKET_OAUTH_CLIENT_ID',
+  clientSecretKey: 'BITBUCKET_OAUTH_CLIENT_SECRET',
+
+  /* OAuth API endpoints */
+  tokenHost: 'https://bitbucket.org/',
+  tokenPath: 'https://bitbucket.org/site/oauth2/access_token',
+  authorizePath: 'https://bitbucket.org/site/oauth2/authorize',
+
+  /* Scope of access to request */
+  scope: 'account',
+
+  /* User API endpoint */
+  userApi: 'https://api.bitbucket.org/2.0/user',
+};
 
 module.exports = {
   netlify,
   github,
   gitlab,
+  bitbucket,
 };
+
